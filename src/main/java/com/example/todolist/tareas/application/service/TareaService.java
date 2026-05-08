@@ -27,16 +27,12 @@ public class TareaService {
     }
 
     public Tarea crear(Tarea tarea) {
-        validarTitulo(tarea.getTitulo());
-        validarEstado(tarea.getEstado());
         LocalDate fechaCreacion = tarea.getFechaCreacion() != null ? tarea.getFechaCreacion() : LocalDate.now();
         Tarea nueva = new Tarea(null, tarea.getTitulo(), tarea.getDescripcion(), tarea.getEstado(), fechaCreacion);
         return tareaRepository.save(nueva);
     }
 
     public Tarea actualizar(Long id, Tarea tareaActualizada) {
-        validarTitulo(tareaActualizada.getTitulo());
-        validarEstado(tareaActualizada.getEstado());
         Tarea existente = obtener(id);
         validarTransicion(existente.getEstado(), tareaActualizada.getEstado());
         Tarea aGuardar = new Tarea(
@@ -54,18 +50,6 @@ public class TareaService {
             throw new TareaNotFoundException(id);
         }
         tareaRepository.deleteById(id);
-    }
-
-    private void validarTitulo(String titulo) {
-        if (titulo == null || titulo.isBlank()) {
-            throw new IllegalArgumentException("El título es obligatorio");
-        }
-    }
-
-    private void validarEstado(EstadoTarea estado) {
-        if (estado == null) {
-            throw new IllegalArgumentException("El estado es obligatorio");
-        }
     }
 
     private void validarTransicion(EstadoTarea estadoActual, EstadoTarea estadoNuevo) {

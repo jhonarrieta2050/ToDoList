@@ -1,6 +1,7 @@
 package com.example.todolist.tareas.application.service;
 
 import com.example.todolist.tareas.domain.exception.InvalidEstadoTransitionException;
+import com.example.todolist.tareas.domain.exception.TareaNotFoundException;
 import com.example.todolist.tareas.domain.model.EstadoTarea;
 import com.example.todolist.tareas.domain.model.Tarea;
 import com.example.todolist.tareas.domain.port.TareaRepository;
@@ -49,6 +50,13 @@ class TareaServiceTest {
         Tarea resultado = service.actualizar(creada.getId(), actualizada);
 
         assertEquals(EstadoTarea.EN_PROCESO, resultado.getEstado());
+    }
+
+    @Test
+    void eliminarTareaInexistenteLanzaExcepcion() {
+        TareaService service = new TareaService(new InMemoryTareaRepository());
+
+        assertThrows(TareaNotFoundException.class, () -> service.eliminar(99L));
     }
 
     private static class InMemoryTareaRepository implements TareaRepository {

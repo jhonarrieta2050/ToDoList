@@ -1,0 +1,112 @@
+{
+  "info": {
+    "name": "ToDoList API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Listar tareas",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/tareas",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "tareas"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Obtener tarea por id",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/tareas/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "tareas",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Crear tarea",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"titulo\": \"Tarea 1\",\n  \"descripcion\": \"Descripcion de ejemplo\",\n  \"estado\": \"PENDIENTE\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/tareas",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "tareas"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Actualizar tarea",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"titulo\": \"Tarea 1\",\n  \"descripcion\": \"Descripcion actualizada\",\n  \"estado\": \"EN_PROCESO\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/tareas/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "tareas",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Eliminar tarea",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "{{baseUrl}}/tareas/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "tareas",
+            "1"
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ]
+}

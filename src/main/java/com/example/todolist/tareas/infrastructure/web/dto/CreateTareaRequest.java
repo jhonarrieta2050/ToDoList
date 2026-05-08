@@ -6,10 +6,10 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public record CreateTareaRequest(
-    @NotBlank(message = "El titulo es obligatorio")
+    @NotBlank(message = "El título es obligatorio")
     String titulo,
-    @NotBlank(message = "La descripcion es obligatoria")
-    @Size(min = 5, message = "La descripcion debe tener al menos 5 caracteres")
+    @NotBlank(message = "La descripción es obligatoria")
+    @Size(min = 5, message = "La descripción debe tener al menos 5 caracteres")
     String descripcion,
     @NotNull(message = "El estado es obligatorio")
     EstadoTarea estado

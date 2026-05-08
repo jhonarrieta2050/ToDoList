@@ -58,7 +58,7 @@ public class TareaService {
 
     private void validarTitulo(String titulo) {
         if (titulo == null || titulo.isBlank()) {
-            throw new IllegalArgumentException("El titulo es obligatorio");
+            throw new IllegalArgumentException("El título es obligatorio");
         }
     }
 
